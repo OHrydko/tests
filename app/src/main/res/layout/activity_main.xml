@@ -23,19 +23,46 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            app:titleTextColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleTextColor="@android:color/white" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerLouder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ProgressBar
+                style="?android:attr/progressBarStyle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:indeterminate="true"
+                android:indeterminateTintMode="src_atop"
+                android:visibility="@{viewModel.visibilityOfProgress ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageButton
             android:layout_width="44dp"
             android:layout_height="44dp"
-            android:elevation="3dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/reload_24dp"
             android:layout_marginEnd="10dp"
+            android:background="@android:color/transparent"
+            android:elevation="3dp"
             android:onClick="@{(view) -> viewModel.change()}"
+            android:src="@drawable/reload_24dp"
             app:layout_constraintBottom_toBottomOf="@id/toolbar"
             app:layout_constraintEnd_toEndOf="@id/toolbar"
             app:layout_constraintTop_toTopOf="@id/toolbar"
@@ -53,32 +80,8 @@
             tools:context=".MainActivity">
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/containerLouder"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                app:layout_constraintBottom_toBottomOf="parent "
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ProgressBar
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:indeterminate="true"
-                    android:indeterminateTintMode="src_atop"
-                    android:visibility="@{viewModel.visibilityOfProgress ? View.VISIBLE : View.GONE}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
         </FrameLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
