@@ -92,14 +92,14 @@ public class GameFragment extends Fragment {
             }
             Player winner = currentGame.checkWinner();
             if (winner != null) {
-                gameOver(winner);
+                win(winner);
             }
             if (currentGame.isFieldFilled()) {
                 gameOver();
             }
         }
 
-        private void gameOver(Player player) {
+        private void win(Player player) {
             CharSequence text = "Player \"" + player.getName() + "\" won!";
             Toast.makeText(activity, text, Toast.LENGTH_SHORT).show();
             game.reset();
